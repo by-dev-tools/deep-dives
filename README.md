@@ -45,8 +45,8 @@ plainly than leave you to guess.
   (2026). Josh teaches this properly in his own library,
   [Interface Craft](https://www.interfacecraft.dev). If the skill is useful to
   you, that's where to go next.
-- **Jason Yuan: thoughtful brands.** The brand session draws on Jason's Dive Club
-  conversation,
+- **Jason Yuan: thoughtful brands.** The brand session, once it lands, draws on
+  Jason's Dive Club conversation,
   [*Designing 99 "No"s for a single "Yes"*](https://www.youtube.com/watch?v=qsuqgj4tn0k)
   (2026).
 

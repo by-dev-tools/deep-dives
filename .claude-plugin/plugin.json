@@ -1,7 +1,7 @@
 {
   "name": "deep-dives",
-  "version": "0.1.0",
-  "description": "Interactive design sessions where Claude facilitates and you make every call. Each skill runs one designer's approach as a working session, for incubating ideas rather than shipping production code.",
+  "version": "0.1.1",
+  "description": "Interactive design sessions where Claude facilitates and you make every call. Each skill runs one designer's approach as a working session (first up: Josh Puckett's uncommon care), for incubating ideas rather than shipping production code.",
   "author": {
     "name": "by-dev-tools",
     "url": "https://github.com/by-dev-tools"

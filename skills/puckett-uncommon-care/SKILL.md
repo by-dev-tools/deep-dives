@@ -8,9 +8,10 @@ description: >
   lenses (fidgetability, morphing, the three-slider problem, hospitality,
   range→depth, reduction, metaphor, materiality). The human touches every
   sketch and makes every call. For incubating ideas, not shipping production
-  code. Trigger: "/puckett-uncommon-care", "/puckett-uncommon-care <phase>",
-  "/puckett-uncommon-care resume <notes-path>".
-argument-hint: "[<the interaction> | resume <notes-path> | <phase-name>]"
+  code. Trigger: "/deep-dives:puckett-uncommon-care",
+  "/deep-dives:puckett-uncommon-care <phase>",
+  "/deep-dives:puckett-uncommon-care resume [notes-path]".
+argument-hint: "[<the interaction> | resume [notes-path] | <phase-name>]"
 disable-model-invocation: true
 ---
 
@@ -65,7 +66,8 @@ lenses you're using and which you skipped.
 | Record the human's nos and the tuned values | Write anything into the project's own code or docs |
 
 **Ask, then stop.** End every turn with at most 3 numbered questions, then
-wait. Don't start the next phase in the same turn, and don't answer your own
+wait. Don't ask what you can infer: state it as a default the human can
+correct ("I'll put sketches in `sketches/card-flip/` unless you say otherwise"). Don't start the next phase in the same turn, and don't answer your own
 questions. Keep turns short. The sketches carry the detail, so the chat
 doesn't have to.
 
@@ -82,16 +84,21 @@ Everything for one session goes in **one folder**: the sketches plus a short
 
 - **Default folder:** if the project already has a way to run quick demos (a
   playground app, a demos directory, a dev server with routes), put the
-  sketches there, following its conventions, and ask once to confirm.
-  Otherwise use `sketches/<slug>/` with standalone HTML files that open
-  directly in a browser. Ask before creating either.
-- **`resume <notes-path>`:** read the notes, report the current phase and
-  open threads in at most 5 lines, then continue from the `Phase:` line.
+  sketches there, following its conventions. Otherwise use `sketches/<slug>/`
+  with standalone HTML files. Either way, state the folder as a default in
+  your first turn rather than asking; the human can redirect it.
+- **`resume [notes-path]`:** with no path, find the most recently updated
+  `notes.md` under the sketch folders and confirm it's the right one. Then
+  report the current phase and open threads in at most 5 lines, and continue
+  from the `Phase:` line.
 - **`<phase-name>`:** jump to that phase by the slug in its heading (e.g.
-  `/puckett-uncommon-care depth`). Check its gate first. If the gate fails, say
+  `/deep-dives:puckett-uncommon-care depth`). Check its gate first. If the gate fails, say
   what's missing and what skipping it costs, and offer to go back. If the human
   wants to go ahead anyway, do, and note the skipped gate.
-- **Empty, or a description of the interaction:** start at Phase 1.
+- **Empty, or a description of the interaction:** start at Phase 1. Open with
+  two lines of orientation: the session runs in up to seven short phases
+  (frame, look, range, choose, depth, reduce, close), notes are kept in the
+  sketch folder, and the human can skip a phase, jump, or stop at any time.
 
 Update `notes.md` as you go. A phase is complete when the human has answered
 its closing question, or told you to move on. Only then advance the `Phase:`
@@ -111,9 +118,16 @@ Two sections only grow and are never pruned:
 - **Every sketch gets a tuning panel (§2).** Expose the 2–5 parameters that
   most decide the feel (duration, spring stiffness/damping, travel distance,
   threshold, intensity) as live sliders, with the current values shown. Keep
-  the panel collapsible and out of the way of the interaction itself.
-- **Make it reachable from a phone** if the interaction is touch-first. Say how
-  to open it (a dev-server URL, or the file path) every time you hand one over.
+  the panel collapsible and out of the way of the interaction itself. Give it
+  one **copy values** control that copies a single `name=value, …` line, and
+  mirror the values into the URL hash so a reopened link comes back tuned.
+  You can't see the human's sliders, so that line is how tuned values get
+  back to you without anyone transcribing numbers.
+- **Make it reachable from a phone** if the interaction is touch-first. A file
+  path doesn't open on a phone: serve the folder (the project's dev server, or
+  a simple static server on the local network) and hand over that URL. If you
+  can't, say plainly that testing on a device needs a server. Every time you
+  hand a sketch over, say how to open it.
 - **Respect reduced motion** in anything with motion, even in a sketch: a
   `prefers-reduced-motion` fallback that still shows the idea.
 - **Say what the medium can't show.** If the real target is native (iOS,
@@ -131,7 +145,13 @@ Each phase lists: **gate** → **what you do** → **what goes in the notes** �
 
 *Gate: none.*
 
-Pin down, briefly:
+If the human described the interaction in the arguments, open with a **draft
+frame** built from it: the moment, its essential job, your guess at the
+platform, and the sketch folder. Then ask only what you can't infer. That
+always includes the feeling, in the human's own words. Without arguments, ask
+for the moment, what exists, and the feeling, and infer the rest.
+
+The frame covers:
 - **The moment.** One interaction a person moves through: adding an item,
   scrubbing a chart, confirming a purchase, opening a card. Not a whole screen.
   If the human names a screen, ask which moment on it matters most.
@@ -153,10 +173,11 @@ Pin down, briefly:
 2. **Read it yourself.** Read the code that drives the interaction. Report what
    code can tell you, as facts with file references: control count, modals
    spawned, transitions, hard-coded timings, reduced-motion handling.
-3. **Pick the 2–3 lenses that bite** on this moment and give one observation
-   each, worded as a question about feel where feel is involved (Trap 1). Name
-   the lenses you skipped, in one line.
-4. **Ask where it feels dead.** Their answer outranks your lens read.
+3. **Ask where it feels dead,** before you offer any read of your own. Their
+   answer outranks your lens read.
+4. **Then pick the 2–3 lenses that bite** on this moment, aimed at what they
+   said, and give one observation each, worded as a question about feel where
+   feel is involved (Trap 1). Name the lenses you skipped, in one line.
 
 *Notes:* `## Look`: the facts, the lenses used and skipped, and where the human
 says it feels dead. *Close:* "Where does it feel dead, or flat, to you?"
@@ -178,8 +199,9 @@ says it feels dead. *Close:* "Where does it feel dead, or flat, to you?"
      a craft, a moment of hospitality (L4, L7).
 
    Mark any that sit on the obvious map.
-3. **The human picks 2–3 to sketch.** Rejected ones go in the nos log, with
-   their reason.
+3. **The human picks 2–3 to sketch,** in the same turn you offered them.
+   Rejected ones go in the nos log, with the human's reason if they gave one
+   and "(no reason given)" otherwise. Don't ask for reasons.
 4. **Sketch the picks**, rough and fast, each with its tuning panel. Hand them
    over in one message with how to open each one.
 
@@ -195,10 +217,10 @@ Write the gut pick down with `why: (not yet earned)`.
 2. **Then add what you can know:** for each sketch, run the 2–3 lenses that
    bite. Split each read into *what code shows* and *what only feel can
    settle*, phrased as a question.
-3. **Earn the why.** Ask, one question at a time, until the human can say why
-   their gut pick wins in a way that would convince someone else: "What would
+3. **Earn the why, lightly.** Ask one or two follow-ups at most: "What would
    you lose with the other one?" "Where have you felt this before, outside an
-   app?"
+   app?" Offer a way out: they can keep it as gut for now, recorded as
+   `why: gut (not yet earned)`. That's enough to go deeper.
 4. **The human chooses** one, or a merge. If it's a merge, say plainly which
    part comes from which sketch, and whether the merge adds surface (Trap 3).
    Everything not chosen goes in the nos log.
@@ -208,7 +230,7 @@ so far. *Close:* "Read the why back. Is it true, or just plausible?"
 
 ### Phase 5: Depth `depth` (§1, §2, L5)
 
-*Gate: a chosen concept with an earned why.*
+*Gate: a chosen concept, with its why earned or explicitly kept as gut.*
 
 Work in **rounds**. Each round:
 1. Propose **1–3 specific moves** that take the chosen concept further, each a
@@ -220,8 +242,9 @@ Work in **rounds**. Each round:
 2. Flag any move that adds surface (Trap 3).
 3. The human picks which moves to try. **Build them into the sketch**, adding a
    knob to the tuning panel for anything whose amount matters.
-4. The human touches it and tunes it. **Record the tuned values** in the notes:
-   these are the most durable thing this session produces.
+4. The human touches it, tunes it, and pastes the **copy values** line back.
+   **Record those tuned values** in the notes: they are the most durable thing
+   this session produces.
 
 Polish belongs here: real content, real type, the actual target size. Keep
 going until the human says it's there. Don't push for extra rounds, and don't
