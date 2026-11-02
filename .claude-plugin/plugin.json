@@ -1,0 +1,19 @@
+{
+  "name": "deep-dives",
+  "version": "0.1.0",
+  "description": "Interactive design sessions where Claude facilitates and you make every call. Each skill runs one designer's approach as a working session, for incubating ideas rather than shipping production code.",
+  "author": {
+    "name": "by-dev-tools",
+    "url": "https://github.com/by-dev-tools"
+  },
+  "homepage": "https://github.com/by-dev-tools/deep-dives",
+  "repository": "https://github.com/by-dev-tools/deep-dives",
+  "license": "MIT",
+  "keywords": [
+    "design",
+    "interaction-design",
+    "prototyping",
+    "craft",
+    "facilitation"
+  ]
+}
