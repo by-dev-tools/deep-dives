@@ -1,17 +1,19 @@
 ---
 name: puckett-uncommon-care
 description: >
-  Facilitates an interactive design session on one interaction, using Josh
-  Puckett's idea of uncommon care: execute limited scope to an extraordinarily
-  high bar instead of adding scope. Claude maps the obvious version, builds
+  Pushes one interaction further using Josh Puckett's idea of uncommon care:
+  execute limited scope to an extraordinarily high bar instead of adding
+  scope. Two modes. The full session: Claude maps the obvious version, builds
   rough live sketches with tuning controls, and reads them through eight
   lenses (fidgetability, morphing, the three-slider problem, hospitality,
-  range→depth, reduction, metaphor, materiality). The human touches every
-  sketch and makes every call. For incubating ideas, not shipping production
-  code. Trigger: "/deep-dives:puckett-uncommon-care",
-  "/deep-dives:puckett-uncommon-care <phase>",
+  range→depth, reduction, metaphor, materiality), while the human touches
+  every sketch and makes every call. Quick mode: one read through the lenses
+  that fit, concrete next steps and a Top 3, then control goes back to the
+  human. For incubating ideas, not shipping production code. Trigger:
+  "/deep-dives:puckett-uncommon-care", "/deep-dives:puckett-uncommon-care
+  quick [target]", "/deep-dives:puckett-uncommon-care <phase>",
   "/deep-dives:puckett-uncommon-care resume [notes-path]".
-argument-hint: "[<the interaction> | resume [notes-path] | <phase-name>]"
+argument-hint: "[quick [target] | <the interaction> | resume [notes-path] | <phase-name>]"
 disable-model-invocation: true
 ---
 
@@ -26,6 +28,12 @@ eight lenses as **L1–L8** and the principles as **§N**. Notes template:
 [`assets/session-notes.md`](assets/session-notes.md).
 
 Arguments: `$ARGUMENTS`
+
+**Two modes, one approach.** The **session** (§1–§3) is the default: back and
+forth, live sketches, every call yours. **Quick mode** (`quick`, §Q) is a
+single read for when you want a fast opinion rather than a session. It
+recommends; it never decides, builds or edits anything, and it ends by handing
+control back. Section 0's traps apply to both.
 
 ---
 
@@ -74,6 +82,35 @@ doesn't have to.
 **Incubation weight.** This is for ideas, not production. Sketches are
 throwaway files. No tests, no review pipeline, no commits unless the human
 asks. Spend effort where the human will touch it, not on scaffolding.
+
+---
+
+## Q. Quick mode `quick`
+
+For "give me a fast read on this", not a working session. **One response, no
+files written, nothing applied.**
+
+1. **Target.** What the human named; otherwise the most recently changed demo
+   or surface. Say which one you picked, in one line, so a wrong guess is
+   cheap to correct.
+2. **Look.** Read the code that drives the interaction. If a dev server is
+   already running, use it; don't set one up. Say what you could not see in
+   motion: feel is a guess from code (Trap 1), so word those points as
+   questions.
+3. **The lenses that bite.** Pick the 2–4 that matter for this moment and name
+   the rest as skipped in one line (Trap 4). For each: what's there now, then
+   **one concrete next step** with a file or component reference. Flag any step
+   that adds surface (Trap 3).
+4. **Top 3.** The changes with the highest impact on perceived craft, specific
+   enough to implement as written.
+5. **Hand back.** End with one question offering three ways forward, then stop:
+   apply some of these, sketch one of them to feel it, or open a full session
+   on it. Don't start any of them unprompted.
+
+If the human picks **a full session**, start Phase 1 with the frame drafted
+from the quick read, and treat the quick read as the Look phase: the session
+picks up where the quick read left off. If they pick **sketch one**, build a
+single sketch per "How to sketch" (§1), tuning panel included, and stop again.
 
 ---
 
