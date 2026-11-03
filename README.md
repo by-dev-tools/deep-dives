@@ -14,7 +14,7 @@ together.
 
 | Skill | What the session does | Inspired by |
 |---|---|---|
-| `/deep-dives:puckett-uncommon-care` | Pushes **one interaction** from functional to cared-for. Claude maps the obvious version, builds rough live sketches with tuning sliders, and reads them through eight lenses. You touch each sketch, choose one, and take it deeper. The tuned values are what you keep. | Josh Puckett |
+| `/deep-dives:puckett-uncommon-care` | Pushes **one interaction** from functional to cared-for. In a full session, Claude maps the obvious version, builds rough live sketches with tuning sliders, and reads them through eight lenses; you touch each sketch, choose one, and take it deeper, and the tuned values are what you keep. Add `quick` for a single read instead: the lenses that fit, concrete next steps and a Top 3, then you choose whether to apply, sketch or go deeper. | Josh Puckett |
 
 `/deep-dives:yuan-brand`, a session for building a brand from a human truth
 outward (inspired by Jason Yuan), is in development and will land here next.
